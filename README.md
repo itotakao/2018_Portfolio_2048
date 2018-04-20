@@ -8,7 +8,7 @@ Pazzle「2048」をクローン
 コルーチンで制御　機能は最小限
 
 体験場所
-https://github.com/itotakao.github.io/Portfolio_2048_WebGL
+https://itotakao.github.io/2018_Portfolio_2048/
 
 ## 製作期間
 
