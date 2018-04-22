@@ -53,22 +53,22 @@ public class GameManager : MonoBehaviour {
 	// キーボード取得に使用
 	void Update(){
 		if (!isPlay) {
-			if (Input.GetKeyDown (KeyCode.A)) {
+			if (Input.GetKeyDown (KeyCode.A)||Input.GetKeyDown (KeyCode.LeftArrow)) {
 				isPlay = true;
 				enum_NextMoveAngle = Enum.MoveAngle.Left;
 			}
 
-			if (Input.GetKeyDown (KeyCode.W)) {
+			if (Input.GetKeyDown (KeyCode.W)||Input.GetKeyDown (KeyCode.UpArrow)) {
 				isPlay = true;
 				enum_NextMoveAngle = Enum.MoveAngle.Up;
 			}
 
-			if (Input.GetKeyDown (KeyCode.D)) {
+			if (Input.GetKeyDown (KeyCode.D)||Input.GetKeyDown (KeyCode.RightArrow)) {
 				isPlay = true;
 				enum_NextMoveAngle = Enum.MoveAngle.Right;
 			}
 
-			if (Input.GetKeyDown (KeyCode.S)) {
+			if (Input.GetKeyDown (KeyCode.S)||Input.GetKeyDown (KeyCode.DownArrow)) {
 				isPlay = true;
 				enum_NextMoveAngle = Enum.MoveAngle.Down;
 			}
