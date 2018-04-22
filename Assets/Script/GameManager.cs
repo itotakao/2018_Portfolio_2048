@@ -21,7 +21,13 @@ public class GameManager : MonoBehaviour {
 	[SerializeField]
 	Text scoreText;
 	[SerializeField]
+	Text scoreUpText;
+	[SerializeField]
+	Animator scoreUpAnim;
+	[SerializeField]
 	private int socre = 0;
+
+	private int upScore = 0;
 /* ------------------------------- */
 	// ゲームオーバー関連
 	[SerializeField]
@@ -47,6 +53,7 @@ public class GameManager : MonoBehaviour {
 	void Initilize(){
 		isPlay = false;
 		isUpdate = false;
+		upScore = 0;
 	}
 
 /* ------------------------------- */
@@ -86,8 +93,10 @@ public class GameManager : MonoBehaviour {
 			Initilize ();
 			MoveBoard ();
 			if (isUpdate) {
+				PlayScoreUpAnimation();
 				GenerateNumber ();
 				UpdateDisplay ();
+				ChangeScaleText();
 				CheckGameOver ();
 			}
 
@@ -309,6 +318,12 @@ public class GameManager : MonoBehaviour {
 	void UpdateScore(int num){
 		socre += num;
 		scoreText.text = socre.ToString();
+		upScore += num;
+		scoreUpText.text = upScore.ToString();
+	}
+	// スコア更新のアニメーションを再生
+	void PlayScoreUpAnimation(){
+		scoreUpAnim.Play("ScoreUp", 0, 0.0f);
 	}
 /* ------------------------------- */
 	// リセットボタン用
@@ -320,9 +335,44 @@ public class GameManager : MonoBehaviour {
 		for (int x = 0; x <= 3; x++) 
 			for (int y = 0; y <= 3; y++) 
 				board[x,y] = 0;
-		
+
+		ChangeScaleText();
 		GenerateNumber ();
 		UpdateDisplay ();
 	}
+/* ------------------------------- */
+	// 数字の大きさを桁数に応じて変更
+	public void ChangeScaleText(){
+
+		foreach(var cell in textList){
+			var value = int.Parse(cell.text);
+			switch(Digit(value)){
+				case 0:
+				break;
+				case 1:
+					cell.fontSize = 80;
+				break;
+				case 2:
+					cell.fontSize = 80;
+					break;
+				case 3:
+					cell.fontSize = 50;
+					break;
+				case 4:
+					cell.fontSize = 30;
+					break;
+				default:
+					cell.fontSize = 10;
+				break;
+			}
+		}
+	}
+
+	// 数値の桁数を調べる
+    private int Digit(int num)
+    {
+        // 対数(log10)を取って調べる
+        return (num == 0) ? 1 : ((int)Mathf.Log10(num) + 1);
+    }
 
 }
