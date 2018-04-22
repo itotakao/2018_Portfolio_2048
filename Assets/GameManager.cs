@@ -152,22 +152,15 @@ public class GameManager : MonoBehaviour {
 						switch (enum_NextMoveAngle) {
 						case Enum.MoveAngle.Left:
 							Move (x, y, x - 1, y);
-						
 							break;
-
 						case Enum.MoveAngle.Right:
 							Move (x, y, x + 1, y);
-						
 							break;
-
 						case Enum.MoveAngle.Up:
 							Move (x, y, x, y - 1);
-						
 							break;
-
 						case Enum.MoveAngle.Down:
 							Move (x, y, x, y + 1);
-						
 							break;
 						}
 					}
@@ -175,34 +168,48 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 		// 数値更新
-		for (int x = 0; x <= 3; x++) {
-			for (int y = 0; y <= 3; y++) {
-				if (board [x, y] != 0) {
-					switch (enum_NextMoveAngle) {
-					case Enum.MoveAngle.Left:
-						CalculationCheckAndUpdate (x, y, x - 1, y);
-
-						break;
-
-					case Enum.MoveAngle.Right:
-						CalculationCheckAndUpdate (x, y, x + 1, y);
-
-						break;
-
-					case Enum.MoveAngle.Up:
-						CalculationCheckAndUpdate (x, y, x, y - 1);
-
-						break;
-
-					case Enum.MoveAngle.Down:
-						CalculationCheckAndUpdate (x, y, x, y + 1);
-
-						break;
+		switch (enum_NextMoveAngle) {
+			
+			case Enum.MoveAngle.Left:
+			for (int x = 0; x <= 3; x++) {
+				for (int y = 0; y <= 3; y++) {
+					if (board [x, y] != 0) {
+						CalculationCheckAndUpdate (x, y, x - 1, y);			
 					}
 				}
 			}
-		}
-		// 移動
+			break;
+			
+			case Enum.MoveAngle.Right:
+			for (int x = 3; x >= 0; x--) {
+				for (int y = 3; y >= 0; y--) {
+					if (board [x, y] != 0) {
+						CalculationCheckAndUpdate (x, y, x + 1, y);		
+					}
+				}
+			}
+			break;
+			
+			case Enum.MoveAngle.Up:
+			for (int x = 0; x <= 3; x++) {
+				for (int y = 0; y <= 3; y++) {
+					if (board [x, y] != 0) {
+						CalculationCheckAndUpdate (x, y, x, y - 1);
+					}
+				}
+			}
+			break;
+			
+			case Enum.MoveAngle.Down:
+			for (int x = 3; x >= 0; x--) {
+				for (int y = 3; y >= 0; y--) {
+					if (board [x, y] != 0) {
+						CalculationCheckAndUpdate (x, y, x, y + 1);
+					}
+				}
+			}
+			break;
+		}// 移動
 		for (int x = 0; x <= 3; x++) {
 			for (int y = 0; y <= 3; y++) {
 				if (board [x, y] != 0) {
