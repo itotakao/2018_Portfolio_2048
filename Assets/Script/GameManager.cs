@@ -18,31 +18,22 @@ public class GameManager : MonoBehaviour
 
     /* ------------------------------- */
     // スコア関連
-    [SerializeField]
-    Text scoreText;
-    [SerializeField]
-    Text scoreUpText;
-    [SerializeField]
-    Animator scoreUpAnim;
-    [SerializeField]
-    private int socre = 0;
+    public Text scoreText;
+    public Text scoreUpText;
+    public Animator scoreUpAnim;
+    public int socre = 0;
 
-    private int upScore = 0;
+    public int upScore = 0;
     /* ------------------------------- */
     // ゲームオーバー関連
-    [SerializeField]
-    private Text gameOverText;
+    public Text gameOverText;
     /* ------------------------------- */
     // メインゲーム関連
     // メインゲーム関連
-    [SerializeField]
-    Text[] textList = new Text[16];
-    [SerializeField]
-    private bool isPlay = false;// キーが押されたか判定
-    [SerializeField]
-    private bool isUpdate = false;// 数字が更新されたか判定
-    [SerializeField]
-    private bool isCalculation = false;// 数字が合体されたか判定
+    public Text[] textList = new Text[16];
+    public bool isPlay = false;// キーが押されたか判定
+    public bool isUpdate = false;// 数字が更新されたか判定
+    public bool isCalculation = false;// 数字が合体されたか判定
 
     private MoveAngle enum_NextMoveAngle;// どのキーが押されたかを保存
     /* ------------------------------- */
